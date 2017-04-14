@@ -3311,7 +3311,6 @@ void copy_reverse(const double *in, int N,double *out)
 
 void qmf_wrev(const double *in, int N, double *out)
 {
-    int count = 0;
     double *sigOutTemp;
     sigOutTemp = (double*)malloc(N*sizeof(double));
 
@@ -3342,7 +3341,7 @@ void copy(const double *in, int N, double *out)
 }
 
 int filtcoef(const char* name, double *lp1, double *hp1, double *lp2, double *hp2) {
-    int i = 0; 
+    int i = 0;
     int N = filtlength(name);
 	if (!strcmp(name,"haar") || !strcmp(name,"db1")) {
         copy_reverse(db1, N, lp1);

@@ -8,31 +8,6 @@ C. Torrence and G. Compo, and is available at URL: http://atoc.colorado.edu/rese
 
 #include "cwt.h"
 
-static int factorial2(int N) {
-	int factorial,i;
-
-	factorial = 1;
-
-	for (i = 1; i <= N;++i) {
-		factorial *= i;
-	}
-
-	return factorial;
-}
-
-static double factorial3(int N) {
-	int i;
-	double factorial;
-
-	factorial = 1;
-
-	for (i = 1; i <= N; ++i) {
-		factorial *= i;
-	}
-
-	return factorial;
-}
-
 double factorial(int N) {
 	if (N > 40) {
 		printf("This program is only valid for N <= 40 \n");
@@ -209,7 +184,7 @@ void cwavelet(double *y, int N, double dt, int mother, double param, double s0, 
 		kwave[i] = -kwave[npad - i ];
 	}
 
-	
+
 	// Main loop
 
 	for (j = 1; j <= jtot; ++j) {
@@ -229,15 +204,15 @@ void cwavelet(double *y, int N, double dt, int mother, double param, double s0, 
 			wave[iter + 2 * i + 1] = ypad[i].im;
 		}
 	}
-	
+
 
 	for (i = 1; i <= (N + 1) / 2; ++i) {
 		coi[i - 1] = coi1 * dt * ((double)i - 1.0);
 		coi[N - i] = coi[i - 1];
 	}
-	
 
-	
+
+
 	free(kwave);
 	free(ypad);
 	free(yfft);
@@ -343,6 +318,9 @@ double cdelta(int mother, double param, double psi0 ) {
 			s0 = dt / 16.0;
 			N = 2048;
 		}
+	} else {
+		printf("Mother is neither 0, 1, nor 2.\n");
+		return 0.0;
 	}
 
 	dj = 1.0 / subscale;

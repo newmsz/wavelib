@@ -286,7 +286,7 @@ cwt_object cwt_init(char* wave, double param,int siglength, double dt, int J) {
 			param = 6.0;
 		}
 		strcpy(obj->wave,"morlet");
-		
+
 	}
 	else if (!strcmp(wave, "paul")) {
 		s0 = 2 * dt;
@@ -300,7 +300,7 @@ cwt_object cwt_init(char* wave, double param,int siglength, double dt, int J) {
 			param = 4.0;
 		}
 		strcpy(obj->wave,"paul");
-	
+
 	}
 	else if (!strcmp(wave, "dgauss") || !strcmp(wave, "dog")) {
 		s0 = 2 * dt;
@@ -314,6 +314,9 @@ cwt_object cwt_init(char* wave, double param,int siglength, double dt, int J) {
 			param = 2.0;
 		}
 		strcpy(obj->wave,"dog");
+	} else {
+		printf("\n No such wavelet: %s\n", wave);
+		return NULL;
 	}
 
 	obj->pow = 2;
@@ -1335,7 +1338,7 @@ void setCWTScales(cwt_object wt, double s0, double dj,char *type,int power) {
 		}
 		wt->sflag = 1;
 		wt->pow = power;
-		
+
 	}
 	else if (!strcmp(wt->type, "lin") || !strcmp(wt->type, "linear")) {
 		for (i = 0; i < wt->J; ++i) {
@@ -1428,7 +1431,7 @@ void icwt(cwt_object wt, double *cwtop) {
 	for(i = 0; i < N;++i) {
 		cwtop[i] += wt->smean;
 	}
-	
+
 }
 
 static void idwt1(wt_object wt,double *temp, double *cA_up,double *cA, int len_cA,double *cD,int len_cD,double *X_lp,double *X_hp,double *X) {
