@@ -9,6 +9,9 @@ Copyright (c) 2016, Holger Nahrstaedt
 #include "conv.h"
 #define _USE_MATH_DEFINES
 #include "math.h"
+#ifndef M_SQRT2
+#define M_SQRT2 1.41421356237309504880
+#endif
 
 #ifdef __cplusplus
 extern "C" {
