@@ -121,7 +121,7 @@ void cwavelet(double *y, int N, double dt, int mother, double param, double s0, 
 	double *wave, double *scale, double *period, double *coi) {
 
 	int i, j, k, iter;
-	double ymean, freq1, pi, period1, coi1;
+	double ymean, freq1, pi, period1 = 0.0, coi1 = 0.0;
 	double tmp1, tmp2;
 	double scale1;
 	double *kwave;
