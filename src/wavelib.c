@@ -1422,7 +1422,7 @@ void icwt(cwt_object wt, double *cwtop) {
 	cdel = cdelta(wt->mother, wt->m, psi);
 
 	//printf("\n PSI %g CDEL %g param %g mother %d \n", psi, cdel,wt->m,wt->mother);
-	if ((!strcmp(wt->type, "pow") || !strcmp(wt->type, "power")) && wt->pow == 2) {
+	if ((strcmp(wt->type, "pow") != 0 || strcmp(wt->type, "power") != 0) && wt->pow == 2) {
 		icwavelet(wt->params, N, wt->params+nj2, wt->J, wt->dt, wt->dj, cdel, psi, cwtop);
 	} else {
 		printf("Inverse CWT is only available for power of 2.0 scales \n");
